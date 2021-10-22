@@ -68,4 +68,14 @@ internal class PromptTest {
         }
         assertEquals("Game Over\n", displayedWord)
     }
+
+    @Test
+    fun `display congratulations message`() {
+        val displayedMessage = tapSystemOut {
+            displayCongratulationsMessage("computer")
+        }
+
+        assertEquals("Congratulations you won! \uD83C\uDF89 You correctly guessed computer ✨\n", displayedMessage)
+
+    }
 }

@@ -21,8 +21,6 @@ fun displayObfuscatedWord(word: String) {
    displayWordBeingGuessed(word.obfuscate())
 }
 
-fun String.obfuscate() = "_".repeat(this.length)
-
 fun displayGameOver() {
     println("Game Over")
 }
@@ -36,3 +34,9 @@ fun formatWithSpaces(guess: CharArray, accumulator: String): String {
         formatWithSpaces(tail.toCharArray(), "$accumulator$letter ")
     }
 }
+
+fun displayCongratulationsMessage(word: String) {
+    println("Congratulations you won! \uD83C\uDF89 You correctly guessed $word ✨")
+}
+
+fun String.obfuscate() = "_".repeat(this.length)

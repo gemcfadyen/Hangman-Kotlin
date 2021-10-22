@@ -25,7 +25,8 @@ internal class GameRunnerTest {
                     "Please guess a letter: \nc o m p u t _ _\n" +
                     "Please guess a letter: \nc o m p u t e _\n" +
                     "Please guess a letter: \nc o m p u t e r\n" +
-                    "Game Over\n", prompt
+                    "Game Over\n" +
+                    "Congratulations you won! \uD83C\uDF89 You correctly guessed computer ✨\n", prompt
         )
     }
 
@@ -53,7 +54,7 @@ internal class GameRunnerTest {
     @Test
     fun `correct guesses are substituted even though word is not guessed correctly overall`() {
         val prompt = tapSystemOut {
-            withTextFromSystemIn("a", "c", "a", "a", "a", "a", "p","a")
+            withTextFromSystemIn("a", "c", "a", "a", "a", "a", "p", "a")
                 .execute {
                     startGame(Random(1))
                 }

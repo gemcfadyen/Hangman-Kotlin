@@ -23,13 +23,6 @@ fun startGame(random: Random) {
         initialGuess.currentStateOfGuessedWord,
         calculateRemainingLives(Lives.INITIAL_NUMBER_OF_LIVES, initialGuess.containedGuessedLetter)
     )
-
-    // select word to be guessed
-    // DO:  prompt user to enter letter
-    //      read in users guess
-    //      if letter is in word - show letter in correct places
-    //      else if letter is wrong - deduct a life
-    //  WHILE there are lives left
 }
 
 private fun handlePlayersGuesses(wordToGuess: String, stateOfGuess: String): WordBeingGuessed {
@@ -57,5 +50,8 @@ private fun loopGame(
         )
     } else {
         displayGameOver()
+        if (!currentStateOfGuessedWord.contains('_')) {
+            displayCongratulationsMessage(wordToGuess)
+        }
     }
 }
