@@ -24,6 +24,8 @@ fun calculateRemainingLives(numberOfLives: Int, isCorrectGuess: Boolean): Int {
     }
 }
 
+fun hasWon(currentStateOfWordBeingGuessed: String) = !currentStateOfWordBeingGuessed.contains('_')
+
 private fun substituteLetter(
     wordToGuess: String,
     letter: Char,

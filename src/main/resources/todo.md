@@ -1,7 +1,7 @@
- - [x] incorrect guesses should remove a lifeline
- - [] reading input should return a Char
- - [x] loop the guessing until the game is over
- - [] determine whether the user has won and stop the game if they have won
- - [] display incorrect guesses with the number of lives remaining 
- - [] offer user to play again?  Y/N
- - [] input should be validated it is a letter etc 
+- [x] incorrect guesses should remove a lifeline
+- [] reading input should return a Char
+- [] input should be validated it is a letter etc
+- [x] loop the guessing until the game is over
+- [x] determine whether the user has won and stop the game if they have won
+- [] display incorrect guesses with the number of lives remaining 
+- [] offer user to play again?  Y/N

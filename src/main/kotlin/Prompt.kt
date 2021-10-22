@@ -13,6 +13,7 @@ fun readInput(): String {
     }
 }
 
+//writer
 fun displayWordBeingGuessed(word: String) {
     println(formatWithSpaces(word.toCharArray(), ""))
 }
@@ -25,6 +26,10 @@ fun displayGameOver() {
     println("Game Over")
 }
 
+fun displayCongratulationsMessage(word: String) {
+    println("Congratulations you won! \uD83C\uDF89 You correctly guessed $word ✨")
+}
+
 fun formatWithSpaces(guess: CharArray, accumulator: String): String {
     return if (guess.size == 1) {
         "$accumulator${guess[0]}"
@@ -33,10 +38,6 @@ fun formatWithSpaces(guess: CharArray, accumulator: String): String {
         val tail = guess.drop(1)
         formatWithSpaces(tail.toCharArray(), "$accumulator$letter ")
     }
-}
-
-fun displayCongratulationsMessage(word: String) {
-    println("Congratulations you won! \uD83C\uDF89 You correctly guessed $word ✨")
 }
 
 fun String.obfuscate() = "_".repeat(this.length)

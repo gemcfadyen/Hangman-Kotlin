@@ -77,4 +77,10 @@ internal class GameRulesTest {
         val updatedNumberOfLives = calculateRemainingLives(numberOfLives, isCorrectGuess)
         assertEquals(numberOfLives, updatedNumberOfLives)
     }
+
+    @Test
+    fun `player has won when no blanks remaning`() {
+        val hasWon = hasWon("baby")
+        assertTrue(hasWon)
+    }
 }

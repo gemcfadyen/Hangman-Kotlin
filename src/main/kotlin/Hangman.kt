@@ -1,7 +1,17 @@
 import kotlin.random.Random
 
 val dictionary =
-    listOf("palindrome", "cycle", "banana", "computer", "exciting", "bungee", "scooter", "okra", "skipping")
+    listOf(
+        "palindrome",
+        "cycle",
+        "banana",
+        "computer",
+        "exciting",
+        "bungee",
+        "scooter",
+        "okra",
+        "skipping"
+    )
 
 class Lives {
     companion object {
@@ -15,6 +25,7 @@ fun main(args: Array<String>) {
 
 fun startGame(random: Random) {
     val wordToGuess = selectWordFrom(dictionary, random)
+//    println(wordToGuess)
     displayObfuscatedWord(wordToGuess)
 
     val initialGuess = handlePlayersGuesses(wordToGuess, wordToGuess.obfuscate())
@@ -28,7 +39,7 @@ fun startGame(random: Random) {
 private fun handlePlayersGuesses(wordToGuess: String, stateOfGuess: String): WordBeingGuessed {
     promptForGuess()
     val playersInput = readInput()
-    //todo validate the input better
+    //todo validate the input better - within the prompt function
     val char = playersInput.toCharArray().first()
     val updatedGuess = processGuess(char, wordToGuess, stateOfGuess)
     displayWordBeingGuessed(updatedGuess.currentStateOfGuessedWord)
@@ -50,7 +61,7 @@ private fun loopGame(
         )
     } else {
         displayGameOver()
-        if (!currentStateOfGuessedWord.contains('_')) {
+        if (hasWon(currentStateOfGuessedWord)) {
             displayCongratulationsMessage(wordToGuess)
         }
     }
