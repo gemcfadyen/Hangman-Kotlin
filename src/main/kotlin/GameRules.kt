@@ -12,6 +12,18 @@ fun processGuess(letter: Char, wordToGuess: String, currentStateOfWordBeingGuess
     }
 }
 
+fun isInProgress(remainingLives: Int, currentStateOfWordBeingGuessed: String): Boolean {
+    return remainingLives > 0 && currentStateOfWordBeingGuessed.contains('_')
+}
+
+fun calculateRemainingLives(numberOfLives: Int, isCorrectGuess: Boolean): Int {
+    return if (isCorrectGuess) {
+        numberOfLives
+    } else {
+        numberOfLives - 1
+    }
+}
+
 private fun substituteLetter(
     wordToGuess: String,
     letter: Char,

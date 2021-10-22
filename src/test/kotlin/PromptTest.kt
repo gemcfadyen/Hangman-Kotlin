@@ -56,8 +56,16 @@ internal class PromptTest {
     @Test
     fun `displays obsfiscated word`() {
         val displayedWord = tapSystemOut {
-            displayObsficatedWord("skeleton")
+            displayObfuscatedWord("skeleton")
         }
         assertEquals("_ _ _ _ _ _ _ _\n", displayedWord)
+    }
+
+    @Test
+    fun `displays game over message`() {
+        val displayedWord = tapSystemOut {
+            displayGameOver()
+        }
+        assertEquals("Game Over\n", displayedWord)
     }
 }

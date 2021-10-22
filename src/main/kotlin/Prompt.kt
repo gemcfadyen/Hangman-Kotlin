@@ -17,8 +17,14 @@ fun displayWordBeingGuessed(word: String) {
     println(formatWithSpaces(word.toCharArray(), ""))
 }
 
-fun displayObsficatedWord(word: String) {
-   displayWordBeingGuessed("_".repeat(word.length))
+fun displayObfuscatedWord(word: String) {
+   displayWordBeingGuessed(word.obfuscate())
+}
+
+fun String.obfuscate() = "_".repeat(this.length)
+
+fun displayGameOver() {
+    println("Game Over")
 }
 
 fun formatWithSpaces(guess: CharArray, accumulator: String): String {

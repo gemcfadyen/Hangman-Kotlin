@@ -42,8 +42,39 @@ internal class GameRulesTest {
         assertEquals("_r____", output.currentStateOfGuessedWord)
     }
 
-//    @Test
-//    fun `formats guess with spaces`() {
-//       assertEquals("_e__o", formatGuess(charArrayOf('_', 'e', '_', '_', 'o')))
-//    }
+    @Test
+    fun `game is in progress whilst there are blanks left to guess in word`() {
+        val isInProgress = isInProgress(4, "_ a _ _")
+        assertTrue(isInProgress)
+    }
+
+    @Test
+    fun `game is not in progress if there are no blanks left in the word`() {
+        val isInProgress = isInProgress(4, "b a b y")
+        assertFalse(isInProgress)
+    }
+
+    @Test
+    fun `game is not in progress if there are blanks left in the word but there are 0 lives left`() {
+        val isInProgress = isInProgress(0, "_ a _ y")
+        assertFalse(isInProgress)
+    }
+
+    @Test
+    fun `number of lives is reduced when an incorrect guess is made`() {
+        val numberOfLives = 5
+        val isCorrectGuess = false
+
+        val updatedNumberOfLives = calculateRemainingLives(numberOfLives, isCorrectGuess)
+        assertEquals(4, updatedNumberOfLives)
+    }
+
+    @Test
+    fun `number of lives is not changed when a correct guess is made`() {
+        val numberOfLives = 5
+        val isCorrectGuess = true
+
+        val updatedNumberOfLives = calculateRemainingLives(numberOfLives, isCorrectGuess)
+        assertEquals(numberOfLives, updatedNumberOfLives)
+    }
 }
