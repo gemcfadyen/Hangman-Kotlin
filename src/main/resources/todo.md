@@ -1,4 +1,4 @@
- - [] incorrect guesses should remove a lifeline
+ - [x] incorrect guesses should remove a lifeline
  - [] reading input should return a Char
- - [] loop the guessing until the game is over
+ - [x] loop the guessing until the game is over
  - [] determine whether the user has won and stop the game if they have won

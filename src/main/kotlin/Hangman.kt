@@ -5,7 +5,7 @@ val dictionary =
 
 class Lives {
     companion object {
-        val INITIAL_NUMBER_OF_LIVES = 6
+        const val INITIAL_NUMBER_OF_LIVES = 6
     }
 }
 
