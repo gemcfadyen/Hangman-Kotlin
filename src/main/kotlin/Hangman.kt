@@ -54,6 +54,7 @@ private fun loopGame(
     currentStateOfGuessedWord: String,
     remainingLives: Int
 ) {
+    displayRemainingLives(remainingLives)
     if (isInProgress(remainingLives, currentStateOfGuessedWord)) {
         val guessResult = handlePlayersGuesses(wordToGuess, currentStateOfGuessedWord)
         val updatedLivesRemaining = calculateRemainingLives(remainingLives, guessResult.containedGuessedLetter)

@@ -136,4 +136,13 @@ internal class PromptTest {
 
         assertEquals("Congratulations you won! \uD83C\uDF89 You correctly guessed computer ✨\n", displayedMessage)
     }
+
+    @Test
+    fun `display remaining lives`() {
+        val displayedMessage = tapSystemOut {
+            displayRemainingLives(4)
+        }
+
+        assertEquals("You have 4 lives remaining\n\n", displayedMessage)
+    }
 }

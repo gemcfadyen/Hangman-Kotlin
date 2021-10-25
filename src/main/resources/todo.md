@@ -3,5 +3,4 @@
 - [x] input should be validated it is a letter etc
 - [x] loop the guessing until the game is over
 - [x] determine whether the user has won and stop the game if they have won
-- [] display incorrect guesses with the number of lives remaining 
-- [] offer user to play again?  Y/N
+- [x] display incorrect guesses with the number of lives remaining 

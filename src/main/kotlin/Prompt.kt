@@ -18,6 +18,11 @@ fun displayIncorrectGuess(guess: Char) {
     println()
 }
 
+fun displayRemainingLives(remainingLives: Int) {
+    println("You have $remainingLives lives remaining")
+    println()
+}
+
 // reader
 fun readValidInput(): Char {
     val input = readLine() ?: ""
