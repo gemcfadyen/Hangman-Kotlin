@@ -41,6 +41,9 @@ private fun handlePlayersGuesses(wordToGuess: String, stateOfGuess: String): Wor
     val playersInput = readValidInput()
 
     val updatedGuess = processGuess(playersInput, wordToGuess, stateOfGuess)
+    if (!updatedGuess.containedGuessedLetter) {
+        displayIncorrectGuess(playersInput)
+    }
     displayWordBeingGuessed(updatedGuess.currentStateOfGuessedWord)
 
     return updatedGuess
@@ -53,15 +56,17 @@ private fun loopGame(
 ) {
     if (isInProgress(remainingLives, currentStateOfGuessedWord)) {
         val guessResult = handlePlayersGuesses(wordToGuess, currentStateOfGuessedWord)
+        val updatedLivesRemaining = calculateRemainingLives(remainingLives, guessResult.containedGuessedLetter)
         loopGame(
             wordToGuess,
             guessResult.currentStateOfGuessedWord,
-            calculateRemainingLives(remainingLives, guessResult.containedGuessedLetter)
+            updatedLivesRemaining
         )
     } else {
-        displayGameOver()
         if (hasWon(currentStateOfGuessedWord)) {
             displayCongratulationsMessage(wordToGuess)
-        } // else show the word you were trying to guess was .... clown face
+        } else {
+            displayGameOver(wordToGuess)
+        }
     }
 }

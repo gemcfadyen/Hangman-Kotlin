@@ -25,7 +25,6 @@ internal class GameRunnerTest {
                     "Please guess a letter: \nc o m p u t _ _\n" +
                     "Please guess a letter: \nc o m p u t e _\n" +
                     "Please guess a letter: \nc o m p u t e r\n" +
-                    "Game Over\n" +
                     "Congratulations you won! \uD83C\uDF89 You correctly guessed computer ✨\n", prompt
         )
     }
@@ -41,13 +40,25 @@ internal class GameRunnerTest {
 
         assertEquals(
             "_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
-                    "Game Over\n", prompt
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
+                    "Game Over\nThe word was computer \uD83E\uDD21\n", prompt
         )
     }
 
@@ -62,15 +73,29 @@ internal class GameRunnerTest {
 
         assertEquals(
             "_ _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \n_ _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "_ _ _ _ _ _ _ _\n" +
                     "Please guess a letter: \nc _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \nc _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \nc _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \nc _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \nc _ _ _ _ _ _ _\n" +
-                    "Please guess a letter: \nc _ _ p _ _ _ _\n" +
-                    "Please guess a letter: \nc _ _ p _ _ _ _\n" +
-                    "Game Over\n", prompt
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "c _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "c _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "c _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+
+                    "There is no `a` in the word\n\n" +
+                    "c _ _ _ _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "c _ _ p _ _ _ _\n" +
+                    "Please guess a letter: \n" +
+                    "There is no `a` in the word\n\n" +
+                    "c _ _ p _ _ _ _\n" +
+                    "Game Over\nThe word was computer \uD83E\uDD21\n", prompt
         )
     }
 }

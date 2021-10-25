@@ -13,6 +13,11 @@ fun repromptForGuess(input: String) {
     promptForGuess()
 }
 
+fun displayIncorrectGuess(guess: Char) {
+    println("There is no `$guess` in the word")
+    println()
+}
+
 // reader
 fun readValidInput(): Char {
     val input = readLine() ?: ""
@@ -38,8 +43,9 @@ fun displayObfuscatedWord(word: String) {
     displayWordBeingGuessed(word.obfuscate())
 }
 
-fun displayGameOver() {
+fun displayGameOver(word: String) {
     println("Game Over")
+    println("The word was $word \uD83E\uDD21")
 }
 
 fun displayCongratulationsMessage(word: String) {

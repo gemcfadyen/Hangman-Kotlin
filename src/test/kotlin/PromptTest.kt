@@ -112,11 +112,20 @@ internal class PromptTest {
     }
 
     @Test
+    fun displayIncorrectGuessMessage() {
+        val display = tapSystemOut {
+            displayIncorrectGuess('k')
+        }
+        assertEquals("There is no `k` in the word\n\n", display)
+
+    }
+
+    @Test
     fun `displays game over message`() {
         val displayedWord = tapSystemOut {
-            displayGameOver()
+            displayGameOver("computer")
         }
-        assertEquals("Game Over\n", displayedWord)
+        assertEquals("Game Over\nThe word was computer \uD83E\uDD21\n", displayedWord)
     }
 
     @Test
