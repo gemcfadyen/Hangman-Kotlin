@@ -3,13 +3,29 @@ fun promptForGuess() {
     println("Please guess a letter: ")
 }
 
+fun repromptForGuess(input: Char) {
+    println("Your input `$input` was invalid.")
+    promptForGuess()
+}
+
+fun repromptForGuess(input: String) {
+    println("Your input `$input` was invalid.")
+    promptForGuess()
+}
+
 // reader
-fun readInput(): String {
+fun readValidInput(): Char {
+    val input = readLine() ?: ""
     return try {
-        readLine() ?: ""
+        val character = input.single()
+        if (!character.isLetter()) {
+            repromptForGuess(character)
+            readValidInput()
+        }
+        character
     } catch (e: Exception) {
-        println("Sorry, we had a blip!  \uD83D\uDC7B")
-        ""
+        repromptForGuess(input)
+        readValidInput()
     }
 }
 
@@ -19,7 +35,7 @@ fun displayWordBeingGuessed(word: String) {
 }
 
 fun displayObfuscatedWord(word: String) {
-   displayWordBeingGuessed(word.obfuscate())
+    displayWordBeingGuessed(word.obfuscate())
 }
 
 fun displayGameOver() {

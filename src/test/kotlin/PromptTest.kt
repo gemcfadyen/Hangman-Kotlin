@@ -15,34 +15,76 @@ internal class PromptTest {
     }
 
     @Test
+    fun `reprompts user to enter another guess when a digit is entered`() {
+        val prompt = tapSystemOut {
+            repromptForGuess('3')
+        }
+        assertEquals("Your input `3` was invalid.\nPlease guess a letter: \n", prompt)
+    }
+
+    @Test
+    fun `reprompts user to enter a guess when input is not a character`() {
+        val prompt = tapSystemOut {
+            repromptForGuess("star")
+        }
+        assertEquals("Your input `star` was invalid.\nPlease guess a letter: \n", prompt)
+    }
+
+    @Test
     fun `reads in players guess`() {
         withTextFromSystemIn("A")
             .execute {
-                val guess = readInput()
-                assertEquals("A", guess)
+                val guess = readValidInput()
+                assertEquals('A', guess)
             }
     }
 
     @Test
-    fun `reports error message to player if exception thrown whilst reading input`() {
-        withTextFromSystemIn()
-            .andExceptionThrownOnInputEnd(IOException("Error for test"))
-            .execute {
-                val prompt = tapSystemOut {
-                    readInput()
+    fun `re-prompts when a number is input`() {
+        val output = tapSystemOut {
+            withTextFromSystemIn("1", "a")
+                .execute {
+                    readValidInput()
                 }
-                assertEquals("Sorry, we had a blip!  \uD83D\uDC7B\n", prompt)
-            }
+        }
+
+        assertEquals("Your input `1` was invalid.\nPlease guess a letter: \n", output)
     }
 
     @Test
-    fun `defaults guess to empty string when exception thrown whilst reading input`() {
-        withTextFromSystemIn()
-            .andExceptionThrownOnInputEnd(IOException("Error for test"))
-            .execute {
-                val guess = readInput()
-                assertEquals("", guess)
-            }
+    fun `re-prompts player if a word is input`() {
+        val output = tapSystemOut {
+            withTextFromSystemIn("cat", "a")
+                .execute {
+                    readValidInput()
+                }
+        }
+
+        assertEquals("Your input `cat` was invalid.\nPlease guess a letter: \n", output)
+    }
+
+    @Test
+    fun `re-prompts player if no input entered`() {
+        val output = tapSystemOut {
+            withTextFromSystemIn("", "a")
+                .execute {
+                    readValidInput()
+                }
+        }
+
+        assertEquals("Your input `` was invalid.\nPlease guess a letter: \n", output)
+    }
+
+    @Test
+    fun `re-prompts player if a special character is input`() {
+        val output = tapSystemOut {
+            withTextFromSystemIn("*", "a")
+                .execute {
+                    readValidInput()
+                }
+        }
+
+        assertEquals("Your input `*` was invalid.\nPlease guess a letter: \n", output)
     }
 
     @Test

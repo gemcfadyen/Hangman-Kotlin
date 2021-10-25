@@ -38,10 +38,9 @@ fun startGame(random: Random) {
 
 private fun handlePlayersGuesses(wordToGuess: String, stateOfGuess: String): WordBeingGuessed {
     promptForGuess()
-    val playersInput = readInput()
-    //todo validate the input better - within the prompt function
-    val char = playersInput.toCharArray().first()
-    val updatedGuess = processGuess(char, wordToGuess, stateOfGuess)
+    val playersInput = readValidInput()
+
+    val updatedGuess = processGuess(playersInput, wordToGuess, stateOfGuess)
     displayWordBeingGuessed(updatedGuess.currentStateOfGuessedWord)
 
     return updatedGuess
@@ -63,6 +62,6 @@ private fun loopGame(
         displayGameOver()
         if (hasWon(currentStateOfGuessedWord)) {
             displayCongratulationsMessage(wordToGuess)
-        }
+        } // else show the word you were trying to guess was .... clown face
     }
 }
