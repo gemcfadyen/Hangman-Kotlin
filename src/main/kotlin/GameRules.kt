@@ -4,6 +4,7 @@ data class WordBeingGuessed(
 )
 
 fun processGuess(letter: Char, wordToGuess: String, currentStateOfWordBeingGuessed: String): WordBeingGuessed {
+    letter.validate()
     return if (wordToGuess.contains(letter)) {
         val updatedWord = substituteLetter(wordToGuess, letter, currentStateOfWordBeingGuessed)
         WordBeingGuessed(true, String(updatedWord))
@@ -38,4 +39,10 @@ private fun substituteLetter(
         updatedWord[position.index] = position.value
     }
     return updatedWord
+}
+
+private fun Char.validate() {
+    if (this.isUpperCase()) {
+        throw IllegalArgumentException("Lowercase input is expected")
+    }
 }

@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 
 internal class GameRulesTest {
     @Test
@@ -24,6 +25,15 @@ internal class GameRulesTest {
 
         assertTrue(output.containedGuessedLetter)
         assertEquals("_a_a_a", output.currentStateOfGuessedWord)
+    }
+
+    @Test
+    fun `throws exception if upper case letter used when the prompt has returned lowercase`() {
+        val exception = assertThrows<IllegalArgumentException> {
+            processGuess('A', "banana", "______")
+        }
+
+        assertEquals("Lowercase input is expected", exception.message)
     }
 
     @Test
@@ -79,7 +89,7 @@ internal class GameRulesTest {
     }
 
     @Test
-    fun `player has won when no blanks remaning`() {
+    fun `player has won when no blanks remaining`() {
         val hasWon = hasWon("baby")
         assertTrue(hasWon)
     }

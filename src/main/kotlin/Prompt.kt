@@ -22,7 +22,7 @@ fun readValidInput(): Char {
             repromptForGuess(character)
             readValidInput()
         }
-        character
+        character.lowercaseChar()
     } catch (e: Exception) {
         repromptForGuess(input)
         readValidInput()

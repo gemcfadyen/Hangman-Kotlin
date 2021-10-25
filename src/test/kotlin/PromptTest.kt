@@ -2,7 +2,6 @@ import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import com.github.stefanbirkner.systemlambda.SystemLambda.withTextFromSystemIn
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import java.io.IOException
 
 
 internal class PromptTest {
@@ -35,7 +34,16 @@ internal class PromptTest {
         withTextFromSystemIn("A")
             .execute {
                 val guess = readValidInput()
-                assertEquals('A', guess)
+                assertEquals('a', guess)
+            }
+    }
+
+    @Test
+    fun `returns lowercase value of players guess`() {
+        withTextFromSystemIn("A")
+            .execute {
+                val guess = readValidInput()
+                assertEquals('a', guess)
             }
     }
 
@@ -118,6 +126,5 @@ internal class PromptTest {
         }
 
         assertEquals("Congratulations you won! \uD83C\uDF89 You correctly guessed computer ✨\n", displayedMessage)
-
     }
 }
